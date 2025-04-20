@@ -28,10 +28,10 @@ void Server::stop() {
 std::string Server::getMetrics() const {
     std::ostringstream cpuStream, memoryStream, availableCpuStream, availableMemoryStream;
 
-    cpuStream << std::fixed << std::setprecision(0) << cpu_;
-    memoryStream << std::fixed << std::setprecision(0) << memory_;
-    availableCpuStream << std::fixed << std::setprecision(0) << available_cpu_;
-    availableMemoryStream << std::fixed << std::setprecision(0) << available_memory_;
+    cpuStream << std::fixed << std::setprecision(1) << cpu_;
+    memoryStream << std::fixed << std::setprecision(1) << memory_;
+    availableCpuStream << std::fixed << std::setprecision(1) << available_cpu_;
+    availableMemoryStream << std::fixed << std::setprecision(1) << available_memory_;
 
     return "[Server: " + id_ + ": " + cpuStream.str() + " CPU, " +
            memoryStream.str() + " Memory, Available: " +
