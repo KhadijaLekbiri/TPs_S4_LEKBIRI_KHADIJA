@@ -23,14 +23,13 @@ void Container::stop() {
 std::string Container::getMetrics() const {
     std::ostringstream cpuStream, memoryStream;
 
-    cpuStream << std::fixed << std::setprecision(0) << cpu_;
-    memoryStream << std::fixed << std::setprecision(0) << memory_;
+    cpuStream << std::fixed << std::setprecision(1) << cpu_; // I just changed the precision to 1 since in some statement it was 0 and in others it was 1
+    memoryStream << std::fixed << std::setprecision(1) << memory_;
 
     return "[Container: " + id_ + ": " + cpuStream.str() + " CPU, " + memoryStream.str() + " Memory, " + image_ + "]";
 }
 
 std::ostream& operator<<(std::ostream& os, const Container& c) {
-    os << std::fixed << std::setprecision(0);
     os <<c.getMetrics();
     return os;
 }
