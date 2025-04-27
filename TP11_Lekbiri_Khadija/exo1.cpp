@@ -1,0 +1,67 @@
+#include <iostream>
+#include <stdexcept>
+#include <string>
+
+class DivideByZeroException: public std ::exception {
+    public: 
+        const char* what() const noexcept override {
+            return "You can not divide by zerooo!! ";
+        }
+};
+
+
+class InvalidOperationException: public std ::exception {
+    public: 
+        const char* what() const noexcept override {
+            return "Invalid Operation !";
+        }
+};
+
+double calculate(double n1, double n2, char op){
+    if (op == '+'){
+        return n1 + n2;
+    }
+    else if (op == '-'){
+        return n1 - n2;
+    }
+    else if (op == '*'){
+        return n1*n2;
+    }
+    else if (op == '/'){
+        if (n2 == 0){
+            throw DivideByZeroException();
+        }
+        return n1/n2;
+    }
+    else {
+        throw InvalidOperationException();
+    }
+};
+
+int main() {
+    double num1, num2;
+    char operation;
+
+    std::cout << "Enter first number: ";
+    std::cin >> num1;
+
+    std::cout << "Enter second number: ";
+    std::cin >> num2;
+
+    std::cout << "Enter operation (+, -, *, /): ";
+    std::cin >> operation;
+
+    try {
+        double result = calculate(num1, num2, operation);
+        std::cout << "Result: " << result << std::endl;
+    } catch (const DivideByZeroException& ex) {
+        std::cerr << ex.what() << std::endl;
+    } catch (const InvalidOperationException& ex) {
+        std::cerr << ex.what() << std::endl;
+    } catch (...) {
+        std::cerr << "An unknown error occurred." << std::endl;
+    }
+
+    std::cout << "Program completed." << std::endl;
+    return 0;
+}
