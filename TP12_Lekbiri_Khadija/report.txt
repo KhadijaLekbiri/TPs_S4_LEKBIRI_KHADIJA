@@ -1,0 +1,6 @@
+Nom                 Âge      Salaire        
+Alice               30        50000.50       
+Bob                 25        40000.75       
+Charlie             35        60000.00       
+Diane               28        45000.25       
+Edward              40        70000.80       
